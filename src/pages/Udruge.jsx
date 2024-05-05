@@ -1,9 +1,10 @@
 import axios from "axios"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import Button from 'react-bootstrap/Button';
 
 import Udruga from "../components/udruge/udruga";
 import ListaUdruga from "../components/udruge/ListaUdruga"
+import Kontekst from "../Kontekst";
 
 
 
@@ -44,12 +45,14 @@ export default function Udruge(){
             </Button>
             <Udruga show={novaUdruga} onHide = {() => postaviNovuUdrugu(false)}/>
             </div>
+            <Kontekst.Provider value={[postaviUdruge]}>
             <div>         
                 <ListaUdruga naslov="Aktivne udruge" udruge={aktivneUdruge} sort={sortirajAktivne} />
             </div>
             <div>  
                 <ListaUdruga naslov="Neaktivne udruge" udruge={neAktivneUdruge} sort={sortirajNeAktivne} />
             </div>
+            </Kontekst.Provider>
         </div>
     );
 }

@@ -12,7 +12,8 @@ export default function ListaUdruga(props){
                     <tr>
                         <th className="cell" onClick={props.sort}>Naziv</th>
                         <th className="cell" onClick={props.sort}>Adresa</th>
-                        <th className="cell" onClick={props.sort}>Grad</th>               
+                        <th className="cell" onClick={props.sort}>Grad</th>
+                        <th className="cell">Briši</th>               
                     </tr>
                 </thead>
                 <tbody>
