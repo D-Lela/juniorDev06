@@ -1,9 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Unos from "../unos"
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Toaster, toast } from 'sonner';
+import Kontekst from '../../Kontekst';
 
 
 export default function Aktivnost(props) {
@@ -16,6 +17,7 @@ export default function Aktivnost(props) {
         sudionici: []
     });
     const [udruge, postaviUdruge] = useState([]);
+    const [postaviListuAktivnosti] = useContext(Kontekst);
 
     useEffect (() => {
         axios
@@ -36,6 +38,7 @@ export default function Aktivnost(props) {
     const saljiPodatke = event => {
         event.preventDefault();
         axios.post("http://localhost:3001/aktivnost",formaPodaci)
+        .then(res => axios.get("http://localhost:3001/aktivnost").then(res => postaviListuAktivnosti(res.data)))
         .then(toast.success("Aktivnost dodana."))
         .then(props.onHide)
     };

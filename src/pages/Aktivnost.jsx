@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios'
 
 import Aktivnost from '../components/aktivnosti/aktivnost'
@@ -11,6 +11,7 @@ import Kontekst from '../Kontekst'
 export default function Aktivnosti(){
     const [novaAktivnost,postaviNovuAktivnost] = useState(false);
     const [listaAktivnosti, postaviListuAktivnosti] = useState([]);
+    const [admin] = useContext(Kontekst)
 
     useEffect(() =>{
         axios
@@ -20,7 +21,7 @@ export default function Aktivnosti(){
 
     return(
         <div>
-            <Kontekst.Provider value={[postaviListuAktivnosti]}>
+            <Kontekst.Provider value={[admin,postaviListuAktivnosti]}>
             <h1>Aktivnosti</h1>
             <div>
             <Button variant="primary" onClick={() => postaviNovuAktivnost(true)}>

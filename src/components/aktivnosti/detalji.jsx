@@ -1,20 +1,21 @@
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Unos from '../unos';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'sonner'
+import Kontekst from '../../Kontekst';
 
 export default function Detalji(props){
     const [volonter, postaviVolontera] = useState({
         ime: "",
         prezime: ""
     });
+    const [admin,postaviListuAktivnosti] = useContext(Kontekst)
 
     function promjenaUlaza(event) {
         const { name, value } = event.target;
         postaviVolontera({ ...volonter, [name]: value });
-        console.log(volonter)
     }
 
     const signUp = event => {
@@ -22,8 +23,26 @@ export default function Detalji(props){
         axios.patch(`http://localhost:3001/aktivnost/${props.objekt.id}`,{
             sudionici : [...props.objekt.sudionici, volonter]
         })
-        .then(toast.success("Prijavljen na ",props.objekt.naziv,"!"))
+        .then(res => 
+            axios.get("http://localhost:3001/aktivnost")
+            .then(res => postaviListuAktivnosti(res.data))
+        )
+        .then(toast.success("Prijavljen na "+ props.objekt.naziv +"!"))
         .then(props.onHide)
+    };
+
+    const obrisi = event =>{
+        event.preventDefault();
+         axios.patch(`http://localhost:3001/aktivnost/${props.objekt.id}`,{
+             sudionici : props.objekt.sudionici.filter(x => x.ime + " " +  x.prezime != event.target.value
+            )
+         })
+         .then(res => 
+             axios.get("http://localhost:3001/aktivnost")
+             .then(res => postaviListuAktivnosti(res.data))
+         )
+         .then(toast.success("Korisnik " +event.target.value +" uspješno odjavljen!"))
+         .then(props.onHide)
     };
 
     return (
@@ -52,7 +71,8 @@ export default function Detalji(props){
                      <Button onClick={signUp}>Prijava</Button>
                     <hr/>
                     <ul>
-                         {props.objekt.sudionici.map(x => <li key={x.ime}>{x.ime + " " + x.prezime}</li>)}
+                         {props.objekt.sudionici.map(x => <li key={x.ime}>{x.ime + " " + x.prezime}
+                         {admin =="1" && <Button onClick={obrisi} value={x.ime + " " + x.prezime}>Obrisi</Button>}</li>)}
                     </ul>
 
                 </Modal.Body>

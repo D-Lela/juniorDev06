@@ -1,24 +1,29 @@
 import axios from "axios"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useContext } from "react"
 import Button from 'react-bootstrap/Button';
 
 import Volonter from '../components/volonteri/volonter'
 import Filter from '../components/filter'
 import Unos from '../components/unos'
-import Detalji from '../components/volonteri/detalji'
+import Kontekst from "../Kontekst";
+import VolonteriLista from "../components/volonteri/volonteriLista";
+
 
 export default function Volonteri(){
     const [noviVolonter, dodajNovogVolontera] = useState(false);
     const [volonteri, postaviVolontere] = useState([]);
     const [filtrirani,postaviFiltrirane] = useState([]);
     const filtri = useRef(["","",""]);
+    const [admin] = useContext(Kontekst);
+    // const scaledNumber = Math.floor(randomNumber * (max - min + 1)) + min; //za slike, dodaj prilikom stvaranja
+
 
     useEffect(() =>{
         axios
         .get("http://localhost:3001/volonter/")
         .then(res => {
             postaviVolontere(res.data), postaviFiltrirane(res.data), filtri.current=["","",""]; 
-        })
+        })   
     },[noviVolonter]);
 
     const odaberiVrstu = (a) =>{
@@ -50,16 +55,18 @@ export default function Volonteri(){
             </div>
             <div>
                 <h1>Volonteri</h1>
-                <Button variant="primary" onClick={() => dodajNovogVolontera(true)}>
+                {admin == "1" && <Button variant="primary" onClick={() => {dodajNovogVolontera(true)}}>
                     Novi volonter
-                </Button>
+                </Button>}
                 <Volonter show={noviVolonter} onHide = {() => dodajNovogVolontera(false)}/>
             </div>
             <div>
                 <Filter akcija={odaberiVrstu} />
             </div>
             <div>
-                {filtrirani.map(v => <Detalji key={v.id} objekt={v} />)}
+                <Kontekst.Provider value={[admin,filtrirani,postaviFiltrirane]}>
+                <VolonteriLista volonteri={filtrirani} postavi={postaviFiltrirane}/>
+                </Kontekst.Provider>
             </div>
         </div>
 

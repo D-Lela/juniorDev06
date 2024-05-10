@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback, useContext } from "react"
 import Button from 'react-bootstrap/Button';
 
 import Udruga from "../components/udruge/udruga";
@@ -14,6 +14,7 @@ export default function Udruge(){
     const [aktivneUdruge, postaviAktivneUdruge] = useState([]);
     const [neAktivneUdruge, postaviNeAktivneUdruge] = useState([]);
     const [novaUdruga,postaviNovuUdrugu] = useState(false);
+    const [admin] = useContext(Kontekst);
 
 
     const sortirajAktivne = (a) => {
@@ -35,7 +36,7 @@ export default function Udruge(){
             let neAktivne = res.data.filter(x => x.status != "1");
             postaviNeAktivneUdruge(neAktivne);
         })
-    },[novaUdruga]);
+    },[novaUdruga,udruge]);
 
     return(
         <div>
@@ -45,13 +46,13 @@ export default function Udruge(){
             </Button>
             <Udruga show={novaUdruga} onHide = {() => postaviNovuUdrugu(false)}/>
             </div>
-            <Kontekst.Provider value={[postaviUdruge]}>
+            <Kontekst.Provider value={[admin,udruge,postaviUdruge]}>
             <div>         
                 <ListaUdruga naslov="Aktivne udruge" udruge={aktivneUdruge} sort={sortirajAktivne} />
             </div>
-            <div>  
+            {admin && <div>  
                 <ListaUdruga naslov="Neaktivne udruge" udruge={neAktivneUdruge} sort={sortirajNeAktivne} />
-            </div>
+            </div>}
             </Kontekst.Provider>
         </div>
     );

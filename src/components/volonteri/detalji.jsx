@@ -1,23 +1,18 @@
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-import { useState } from 'react';
-
 
 
 export default function Detalji(props){
-    const [show, setShow] = useState(false)
     return (
         <div>
-            <p onClick={()=>setShow(!show)}>{props.objekt.ime}</p>
             <Modal
             {...props}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-            show={show}
+            show={props.show}
             >
-
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         {props.objekt.ime}
@@ -33,7 +28,7 @@ export default function Detalji(props){
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button onClick={()=>setShow(!show)}>Zatvori</Button>
+                    <Button onClick={props.onHide}>Zatvori</Button>
                 </Modal.Footer>
             </Modal>
         </div>

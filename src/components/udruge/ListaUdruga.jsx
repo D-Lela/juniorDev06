@@ -1,7 +1,9 @@
 import UdrugaRedak from "./UdrugaRedak";
+import Kontekst from "../../Kontekst";
+import {  useContext } from "react";
 
 export default function ListaUdruga(props){
-
+    const[admin] = useContext(Kontekst);
 
     return(    
         <div>
@@ -13,10 +15,11 @@ export default function ListaUdruga(props){
                         <th className="cell" onClick={props.sort}>Naziv</th>
                         <th className="cell" onClick={props.sort}>Adresa</th>
                         <th className="cell" onClick={props.sort}>Grad</th>
-                        <th className="cell">Briši</th>               
+                        {admin && <th className="cell">Briši</th>}               
                     </tr>
                 </thead>
                 <tbody>
+                    
                     {props.udruge.map(u => (
                         <UdrugaRedak key={u.id} udruga={u} />   
                     ))}

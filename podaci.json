@@ -31,8 +31,8 @@
           "prezime": "Matic"
         },
         {
-          "ime": "Stipe",
-          "prezime": "Stipic"
+          "ime": "Ante",
+          "prezime": "Antic"
         }
       ]
     },
@@ -43,18 +43,15 @@
       "lokacija": "Tamo",
       "udruga": "5b75",
       "opis": "Lorem ipsum dolomet sum",
-      "sudionici": []
+      "sudionici": [
+        {
+          "ime": "SSSS",
+          "prezime": "SSSS"
+        }
+      ]
     }
   ],
   "udruga": [
-    {
-      "id": "1",
-      "naziv": "Prva udruga",
-      "adresa": "Ulica123",
-      "grad": "Split",
-      "svrha": "Bit je biti prvi",
-      "status": "1"
-    },
     {
       "id": "5b75",
       "naziv": "Udruga 2",
@@ -64,52 +61,12 @@
       "status": "1"
     },
     {
-      "id": "9325",
-      "naziv": "Udruga 3",
-      "adresa": "Ulica 333",
-      "grad": "",
-      "svrha": "33333",
-      "status": "0"
-    },
-    {
-      "id": "da32",
-      "naziv": "Udruga4",
-      "adresa": "ul 44",
-      "grad": "",
-      "svrha": "Toaster",
-      "status": "0"
-    },
-    {
-      "id": "88f2",
-      "naziv": "Udruga 5",
-      "adresa": "ul 55",
-      "grad": "Zadar",
-      "svrha": "asdasd",
-      "status": "0"
-    },
-    {
-      "id": "4e18",
-      "naziv": "B Udruga 23asda",
-      "adresa": "asd",
-      "grad": "Gradopolis",
-      "svrha": "asd",
-      "status": "1"
-    },
-    {
       "id": "535f",
       "naziv": "Zrnovnica ",
       "adresa": "Stobrec 123",
       "grad": "",
       "svrha": "Ciscenje rijeke",
-      "status": "0"
-    },
-    {
-      "id": "4ad9",
-      "naziv": "Sasadaasa",
-      "adresa": "bbbhhh",
-      "grad": "Split",
-      "svrha": "asdasdasd",
-      "status": "0"
+      "status": "1"
     },
     {
       "id": "fea8",
@@ -124,7 +81,8 @@
       "naziv": "Stara grupa",
       "adresa": "Stara 123",
       "grad": "Zagreb",
-      "svrha": "Stara"
+      "svrha": "Stara",
+      "status": "1"
     },
     {
       "id": "25af",
@@ -132,82 +90,77 @@
       "adresa": "asd 123",
       "grad": "Zagreb",
       "svrha": "asdfasf",
+      "status": "1"
+    },
+    {
+      "id": "977c",
+      "naziv": "Stota udruga",
+      "adresa": "Sto 123",
+      "grad": "Zagreb",
+      "svrha": "asdasd",
       "status": "0"
+    },
+    {
+      "id": "321f",
+      "naziv": "Udruga B",
+      "adresa": "123 st",
+      "grad": "Zagreb",
+      "svrha": "asdas",
+      "status": "1"
+    },
+    {
+      "id": "12fa",
+      "naziv": "Udruga C",
+      "adresa": "Cccc",
+      "grad": "Zagreb",
+      "svrha": "asdasd",
+      "status": "1"
     }
   ],
   "volonter": [
     {
-      "id": "4b48",
-      "ime": "Ante",
-      "kontakt": "987654321",
-      "grad": "Zagreb",
-      "spol": "male",
-      "aktivnosti": []
-    },
-    {
-      "id": "c92b",
-      "ime": "Stipe",
-      "kontakt": "123456789",
-      "grad": "Zagreb",
-      "spol": "male",
-      "aktivnosti": [
-        "Ekologija",
-        "Razno"
-      ]
-    },
-    {
-      "id": "1c0d",
-      "ime": "Mate",
+      "id": "0bb7",
+      "ime": "Stipe Katić",
       "kontakt": "987654321",
       "grad": "Zagreb",
       "spol": "male",
       "aktivnosti": [
         "Ekologija",
-        "Razno"
-      ]
-    },
-    {
-      "id": "84f8",
-      "ime": "Frane",
-      "kontakt": "987654321",
-      "grad": "Zagreb",
-      "spol": "male",
-      "aktivnosti": [
-        "Edukacija",
-        "Prijevoz"
-      ]
-    },
-    {
-      "id": "ffc0",
-      "ime": "Franka",
-      "kontakt": "123123123",
-      "grad": "Zadar",
-      "spol": "female",
-      "aktivnosti": [
-        "Edukacija"
-      ]
-    },
-    {
-      "id": "6369",
-      "ime": "Matija",
-      "kontakt": "123123123",
-      "grad": "Zagreb",
-      "aktivnosti": [
-        "Prijevoz",
         "Razno"
       ],
-      "spol": "male"
+      "slika": "https://xsgames.co/randomusers/assets/avatars/male/45.jpg",
+      "komentari": [],
+      "ocjena": ""
     },
     {
-      "id": "7b7a",
-      "ime": "Mara",
-      "kontakt": "123123123",
-      "grad": "Zadar",
+      "ime": "Anamarija Marić",
+      "kontakt": "987654321",
+      "grad": "",
       "spol": "female",
       "aktivnosti": [
+        "",
         "Ekologija",
         "Edukacija"
-      ]
+      ],
+      "slika": "https://xsgames.co/randomusers/assets/avatars/female/31.jpg",
+      "komentari": [],
+      "ocjena": "",
+      "id": "e1fc"
+    },
+    {
+      "id": "50dc",
+      "ime": "Ante Benić",
+      "kontakt": "095123123",
+      "grad": "",
+      "spol": "male",
+      "aktivnosti": [
+        "",
+        "Edukacija",
+        "Prijevoz"
+      ],
+      "slika": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
+      "komentari": [],
+      "ocjena": ""
     }
   ]
 }
