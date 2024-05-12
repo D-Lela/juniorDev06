@@ -22,7 +22,6 @@ export default function Aktivnosti(){
     return(
         <div>
             <Kontekst.Provider value={[admin,postaviListuAktivnosti]}>
-            <h1>Aktivnosti</h1>
             <div>
             <Button variant="primary" onClick={() => postaviNovuAktivnost(true)}>
                 Nova Aktivnost

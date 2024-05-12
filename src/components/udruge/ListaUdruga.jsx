@@ -8,8 +8,7 @@ export default function ListaUdruga(props){
     return(    
         <div>
             <h1>{props.naslov}</h1>    
-            <table>
-                
+            <table className="table">
                 <thead>
                     <tr>
                         <th className="cell" onClick={props.sort}>Naziv</th>

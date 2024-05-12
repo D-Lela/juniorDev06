@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/esm/Button';
 import axios from 'axios';
 import Volonter from './volonter';
 import { toast } from 'sonner';
+import StarRate from '../starRate';
 
 export default function VolonteriLista(props) {
     const [show, setShow] = useState(false)
@@ -22,7 +23,7 @@ export default function VolonteriLista(props) {
         komentari: [],
         ocjena: ""
     });
-    const [admin,filtrirani,postaviFiltrirane] = useContext(Kontekst)
+    const [admin,filtrirani,postaviFiltrirane,render,postaviRender] = useContext(Kontekst)
 
     function obrisi(v){
         let potvrdi = window.confirm("Sigurno želite izbrisati ovog volontera?")
@@ -40,20 +41,36 @@ export default function VolonteriLista(props) {
         setUpdate(true);
     }
 
+    function detailsV(v){
+      updateVolonter.current = v;
+      setShow(true);
+    }
+
+    function ocijeni(ocjena,id){
+      axios.patch(`http://localhost:3001/volonter/${id}`,{
+          ocjena: ocjena
+      })
+      .then(rez => 
+        {axios.get("http://localhost:3001/volonter")
+        .then(rez =>{postaviFiltrirane(()=>rez.data)
+          })
+        })
+    }
+
     return (
     <Row xs={1} md={3} className="g-4">
       {props.volonteri.map(v => (
         <Col key={v.id}>
-          <Card key={v.id} >
-            <Detalji key={v.id} objekt={v} show={show} onHide={() => setShow(false)}/>
-            <Card.Img variant="top" src={v.slika} onClick={()=>setShow(!show)}/>
-            <Card.Body >
-              <Card.Title onClick={()=>setShow(!show)}>{v.ime}</Card.Title>
-              <Card.Text onClick={()=>setShow(!show)}>       
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>             
+          <Card key={v.id} bg={"success"} >
+            <Card.Body>
+            <Card.Img variant="top" src={v.slika} onClick={() => detailsV(v)}/>
+              <Card.Title onClick={() => detailsV(v)}>{v.ime}</Card.Title>
+              <Card.Text>       
+                Ovo je {v.ime}. Izuzetno voli {v.aktivnosti[0].slice(0,-1) + "u"}.
+                
+              </Card.Text> 
+              <hr />
+                <StarRate ocijeni={ocijeni} ocjena = {v.ocjena} id={v.id}/>        
                 {admin=="1" && <div>
                         <Button variant='danger' value={v} onClick={() => obrisi(v)}>Briši</Button>
                         <Button variant='warning' value={v} onClick={()=>updateV(v)}>Uredi</Button>                   
@@ -62,7 +79,7 @@ export default function VolonteriLista(props) {
           </Card>
         </Col>
       ))}
-      
+      <Detalji objekt={updateVolonter.current} show={show} onHide={() => setShow(false)}/>        
       <Volonter show={update} onHide = {() => {setUpdate(false),
       updateVolonter.current = {
         ime: "",

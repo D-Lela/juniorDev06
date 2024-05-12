@@ -32,7 +32,7 @@
         },
         {
           "ime": "Ante",
-          "prezime": "Antic"
+          "prezime": "asgfvasdgf"
         }
       ]
     },
@@ -49,6 +49,15 @@
           "prezime": "SSSS"
         }
       ]
+    },
+    {
+      "id": "f086",
+      "naziv": "Neka aktivnost",
+      "datum": "12/12/1212",
+      "lokacija": "Split",
+      "udruga": "Udruga 2",
+      "opis": "aoskdoaksd",
+      "sudionici": []
     }
   ],
   "udruga": [
@@ -58,14 +67,6 @@
       "adresa": "ulica 456",
       "grad": "Zagreb",
       "svrha": "Druga",
-      "status": "1"
-    },
-    {
-      "id": "535f",
-      "naziv": "Zrnovnica ",
-      "adresa": "Stobrec 123",
-      "grad": "",
-      "svrha": "Ciscenje rijeke",
       "status": "1"
     },
     {
@@ -115,6 +116,14 @@
       "grad": "Zagreb",
       "svrha": "asdasd",
       "status": "1"
+    },
+    {
+      "id": "4b7a",
+      "naziv": "Najnovija udruga",
+      "adresa": "asdasd",
+      "grad": "Zagreb",
+      "svrha": "asdasd",
+      "status": "0"
     }
   ],
   "volonter": [
@@ -129,38 +138,77 @@
         "Razno"
       ],
       "slika": "https://xsgames.co/randomusers/assets/avatars/male/45.jpg",
-      "komentari": [],
-      "ocjena": ""
+      "komentari": [
+        {
+          "komentar": "asdasd",
+          "vrijeme": "12/05/2024, 16:26:17"
+        },
+        {
+          "komentar": "asdasdasdasv",
+          "vrijeme": "12/05/2024, 16:26:20"
+        }
+      ],
+      "ocjena": 5
     },
     {
       "ime": "Anamarija Marić",
       "kontakt": "987654321",
-      "grad": "",
+      "grad": "Zadar",
       "spol": "female",
       "aktivnosti": [
-        "",
         "Ekologija",
         "Edukacija"
       ],
       "slika": "https://xsgames.co/randomusers/assets/avatars/female/31.jpg",
-      "komentari": [],
-      "ocjena": "",
-      "id": "e1fc"
+      "komentari": [
+        {
+          "komentar": "aaaaaaaaaaaa",
+          "vrijeme": "12/05/2024, 16:19:54"
+        },
+        {
+          "komentar": "asd",
+          "vrijeme": "12/05/2024, 16:29:51"
+        },
+        {
+          "komentar": "asdsad",
+          "vrijeme": "12/05/2024, 23:22:31"
+        }
+      ],
+      "id": "e1fc",
+      "ocjena": 5
     },
     {
       "id": "50dc",
       "ime": "Ante Benić",
       "kontakt": "095123123",
-      "grad": "",
+      "grad": "Zagreb",
       "spol": "male",
       "aktivnosti": [
-        "",
         "Edukacija",
         "Prijevoz"
       ],
       "slika": "https://xsgames.co/randomusers/assets/avatars/male/70.jpg",
       "komentari": [],
-      "ocjena": ""
+      "ocjena": 2
+    },
+    {
+      "id": "4174",
+      "ime": "Josip",
+      "kontakt": "5555555555",
+      "grad": "Zagreb",
+      "spol": "male",
+      "aktivnosti": [
+        "Ekologija",
+        "Prijevoz"
+      ],
+      "slika": "https://xsgames.co/randomusers/assets/avatars/male/8.jpg",
+      "komentari": [
+        {
+          "komentar": "asfasdf",
+          "vrijeme": "13/05/2024, 00:18:59"
+        }
+      ],
+      "ocjena": 4
     }
   ]
 }

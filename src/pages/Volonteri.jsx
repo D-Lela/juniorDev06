@@ -15,15 +15,25 @@ export default function Volonteri(){
     const [filtrirani,postaviFiltrirane] = useState([]);
     const filtri = useRef(["","",""]);
     const [admin] = useContext(Kontekst);
-    // const scaledNumber = Math.floor(randomNumber * (max - min + 1)) + min; //za slike, dodaj prilikom stvaranja
-
+    const [prosjek, postaviProsjek] = useState(0);
+    const brojOcjena = useRef(0);
+    const [render, postaviRender] = useState(false);
 
     useEffect(() =>{
         axios
         .get("http://localhost:3001/volonter/")
         .then(res => {
-            postaviVolontere(res.data), postaviFiltrirane(res.data), filtri.current=["","",""]; 
-        })   
+            postaviVolontere(res.data), postaviFiltrirane(res.data), filtri.current=["","",""],
+            postaviProsjek((res.data.reduce((acc, obj) => {
+                if(!isNaN(parseInt(obj.ocjena)))
+                    {
+                        brojOcjena.current++;
+                        return acc + parseInt(obj.ocjena)
+                    }
+                else
+                    return acc;
+                },0)/(brojOcjena.current/2)).toFixed(2));
+        })
     },[noviVolonter]);
 
     const odaberiVrstu = (a) =>{
@@ -64,7 +74,8 @@ export default function Volonteri(){
                 <Filter akcija={odaberiVrstu} />
             </div>
             <div>
-                <Kontekst.Provider value={[admin,filtrirani,postaviFiltrirane]}>
+                <label>{prosjek}</label>
+                <Kontekst.Provider value={[admin,filtrirani,postaviFiltrirane,render,postaviRender]}>
                 <VolonteriLista volonteri={filtrirani} postavi={postaviFiltrirane}/>
                 </Kontekst.Provider>
             </div>

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import App from './App.jsx'
+
 
 import HomePage from './pages/HomePage.jsx'
 import AboutMe from './pages/AboutMe.jsx'
@@ -14,6 +14,7 @@ import NotFoundPage from './pages/NotFoundPage.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
+import './App.css'
 
 const router = createBrowserRouter([
   {
